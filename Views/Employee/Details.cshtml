@@ -1,0 +1,123 @@
+﻿@model IEnumerable<VineYardSolutionsTask.Models.Employee>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .custom-dl dt,
+        .custom-dl dd {
+            flex-basis: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        @foreach (var item in Model)
+        {
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal custom-dl">
+                            <dt>
+                                <span>Employee ID</span>
+                            </dt>
+                            <dd>
+                                <span>@item.EmployeeID</span>
+                            </dd>
+
+                            <dt>
+                                <span>Employee Name</span>
+                            </dt>
+                            <dd>
+                                <span>@item.Empname</span>
+                            </dd>
+
+                            <dt>
+                                <span>Employee Current Address</span>
+                            </dt>
+                            <dd>
+                                <span>@item.EmpCurrentAddress</span>
+                            </dd>
+
+                            <dt>
+                                <span>Employee Permanent Address</span>
+                            </dt>
+                            <dd>
+                                <span>@item.EmpPermanentAddress</span>
+                            </dd>
+
+                            <dt>
+                                <span>Employee Date Of Birth</span>
+                            </dt>
+                            <dd>
+                                <span>@item.EmpDob.ToString("MM/dd/yyyy")</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal custom-dl">
+                            <dt>
+                                <span>Employee Joining day</span>
+                            </dt>
+                            <dd>
+                                <span>@item.EmpDOJ.ToString("MM/dd/yyyy")</span>
+                            </dd>
+
+                            <dt>
+                                <span>Job Title</span>
+                            </dt>
+                            <dd>
+                                <span>@item.Jobtitle</span>
+                            </dd>
+
+                            <dt>
+                                <span>Work Phone</span>
+                            </dt>
+                            <dd>
+                                <span>@item.WorkPhone</span>
+                            </dd>
+
+                            <dt>
+                                <span>Cell Phone</span>
+                            </dt>
+                            <dd>
+                                <span>@item.CellPhone</span>
+                            </dd>
+
+                            <dt>
+                                <span>Employee Email</span>
+                            </dt>
+                            <dd>
+                                <span>@item.Email</span>
+                            </dd>
+
+                            <dt>
+                                <span>Gender</span>
+                            </dt>
+                            <dd>
+                                <span>@item.Gender</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        }
+    </div>
+   
+</body>
+</html>

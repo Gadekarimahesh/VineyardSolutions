@@ -1,0 +1,174 @@
+﻿@model VineYardSolutionsTask.Models.Employee
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Scripts/ValidationandAjaxCalling.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <h4>Employee</h4>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Enter Employee Name</label>
+                        <input name="EmpName" id="EmpName" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Empname, "", new { @class = "text-danger", id = "EmpNameError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Enter Email Address</label>
+                        <input name="Email" id="Email" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger",id= "EmailError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label  class="control-label">Work Phone</label>
+                        <input name="WorkPhone" id="WorkPhone" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.WorkPhone, "", new { @class = "text-danger", id = "WorkPhoneError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label  class="control-label">Cell Phone</label>
+                        <input name="CellPhone" id="CellPhone" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger", id = "CellPhoneError" })
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Enter Current Address</label>
+                        <input name="EmpCurrentAddress" id="EmpCurrentAddress" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.EmpCurrentAddress, "", new { @class = "text-danger", id = "EmpCurrentAddressError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Enter Permanent Address</label>
+                        <input name="EmpPermanentAddress"  id="EmpPermanentAddress"class="form-control" />
+                        @Html.ValidationMessageFor(model => model.EmpPermanentAddress, "", new { @class = "text-danger" , id = "EmpPermanentAddressError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Select Date of Birth</label>
+                        <input name="EmpDob"  id="EmpDob" type="date" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.EmpDob, "", new { @class = "text-danger", id= "EmpDobError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Age</label>
+                        <input name="Age" id="Age" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger",id= "EmpAgeError" })
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Select Date of Joining</label>
+                        <input name="EmpDOJ" id="EmpDOJ" type="date" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.EmpDOJ, "", new { @class = "text-danger",id= "EmpDOJError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label  class="control-label">Select Gender</label>
+                        <div>
+                            <label>
+                                <input type="radio" name="Gender" class="gender" value="Male" />
+                                Male
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="Gender" class="gender" value="Female" />
+                                Female
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="Gender" class="gender" value="Other" />
+                                Other
+                            </label>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger",id= "genderError" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Job Title</label>
+                        <input name="Jobtitle" id="Jobtitle" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Jobtitle, "", new { @class = "text-danger" ,id= "JobtitleError" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Select Department</label>
+                        <select name="DepartmentId" id="DepartmentId" class="form-control">
+                            <option value="">--Select department--</option>
+                            @foreach (var item in @ViewBag.departmentlist)
+                            {
+                                <option value="@item.DepartmentID">@item.DepartmentName</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger",id= "DepartmentIdError" })
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label  class="control-label">Select other Department</label>
+                        <select name="OtherDepartmentId" id="OtherDepartmentId" class="form-control">
+                            <option value="">--Select Other details--</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.otherDepartmentId, "", new { @class = "text-danger",id= "OtherDepartmentIdError" })
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label  class="control-label">Select Country</label>
+                        <select name="CountryID" id="CountryId" class="form-control" >
+                            <option value="">Select Country</option>
+                            @foreach (var item in @ViewBag.Countrieslist)
+                            {
+                                <option value="@item.countryID">@item.countryName</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger",id="CountryIdError" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Select State</label>
+                        <select name="StateID" class="form-control" id="statedropdown">
+                            <option value="">--select State--</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger",id= "StateIdError" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="btnSubmit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<VineYardSolutionsTask.Models.Employee>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        table.dataTable tbody th, table.dataTable tbody td {
+            padding: 0px 0px !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 3px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background-color: #007bff;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    @Html.ActionLink("Create","Create")
+    <table id="employeeTable" class="table" align="center" border="1">
+        <thead>
+            <tr>
+                <th>EmpID</th>
+                <th>EmpName</th>
+                <th tooltip="Current address">C address</th>
+                <th>Title</th>
+                <th>WorkPhone</th>
+                <th>Email</th>
+                <th>ManagerName</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.EmployeeID)</td>
+                    <td>@Html.DisplayFor(model => item.Empname)</td>
+                    <td>@Html.DisplayFor(model => item.EmpCurrentAddress)</td>
+                    <td>@Html.DisplayFor(model => item.Jobtitle)</td>
+                    <td>@Html.DisplayFor(model => item.WorkPhone)</td>
+                    <td>@Html.DisplayFor(model => item.Email)</td>
+                    <td>@Html.DisplayFor(model => item.ManagerName)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#employeeTable').DataTable({
+                "pagingType": "full_numbers",
+                "pageLength": 5 
+            });
+        });
+    </script>
+</body>
+</html>
